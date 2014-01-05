@@ -71,7 +71,7 @@
 		}
 
 		echo "<h1>Please choose videos directory</h1>";
-		echo "<h1><b>Browsing Location:</b></h1><input type=\"text\" name=\"path\" value=\"{$path}\" /><a href=\"{$script}?path={$path}&save=save\"><button type=\"button\">save path</button></a>";
+		echo "<h1><b>Browsing Location:</b></h1><input type=\"text\" name=\"path\" id=\"path\" value=\"{$path}\" /><a href=\"#\" onclick=\"location.href='{$script}?path=' + encodeURIComponent(document.getElementById('path').value) + '&save=save'\"><button type=\"button\">save path</button></a>";
 
 		$directories = array();
 		$files = array();
@@ -108,7 +108,7 @@
 		echo "<h2>Navigation</h2>";
 		echo "<ul>";
 		foreach( $directories as $directory ){
-			echo ($directory != $path) ? "<li><a href=\"{$script}?path={$directory}\">{$directory}</a></li>" : "";
+			echo ($directory != $path) ? "<li><a href=\"{$script}?path=" . urlencode($directory) . "\">{$directory}</a></li>" : "";
 		}
 		echo "</ul>";
 
